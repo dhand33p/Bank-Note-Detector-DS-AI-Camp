@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Bank Note Detection</title>
+        <link rel="icon" type="image/x-icon" href="{{url_for('static', filename='assets/favicon.ico')}}" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="{{url_for('static', filename='css/styles.css')}}" rel="stylesheet" />
+    </head>
+    <body id="page-top">
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+            <div class="container px-4">
+                <a class="navbar-brand" href="#page-top">Bank Note Detector</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#services">Data Exploration</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#contact">Machine learning</a></li>
+                        <li class="nav-item"><a class = "nav-link" href="#Conclusion">Conclusion</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#team"></a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- Header-->
+        <header class="bg-primary bg-gradient text-white">
+            <div class="container px-4 text-center">
+                <h1 class="fw-bolder">Bank Note Legit or Not?</h1>
+                <p class="lead">by AI Camp Intern Dhandeep Suglani</p>
+                <a class="btn btn-lg btn-light" href="#about">Detector Development Details</a>
+                <a class="btn btn-lg btn-primary" href="https://github.com/yourusername/your-repo" target="_blank">GitHub Repo</a>
+            </div>
+        </header>
+        <!-- About section-->
+        <section id="about">
+            <div class="container px-4">
+                <div class="row gx-4 justify-content-center">
+                    <div class="col-lg-8">
+                        <h2>What does the project do?
+                        </h2>
+                        <p class="lead">After conducting data exploration and analysis of the dataset, we can depict certain visualizations. These visualizations give us a better understadning of our data and allow us to choose the feautres we define our model. Our project XGBoost model to detect bank notes. Using certain numerical attributes of an image, such as variance and skew, our project can determine if an image is a bank note or not.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Services section-->
+        <section class="bg-light" id="services">
+            <div class="container px-4">
+                <div class="row gx-4 justify-content-center">
+                    <div class="col-lg-8">
+                      
+                        <h1>Data Preparation and Analysis</h1></br>
+                    </div>
+                    <div class="col-lg-8">
+                        <p class="lead">Conduct data analysis and preparation before diving deep into the machine learning and classifying if the bank note is valid. </p> 
+
+                    <div class="col-lg-8">
+                        <h3>Data Summary</h3>
+                        <p class="lead">We summarize the dataset and understand the variance, skew, and range of the data. </p>
+                      
+                        <p>The minimum and maximum values for each feature suggest a relatively wide range of values. The target variable, Class, is binary with values of 0 or 1, and the dataset has roughly an equal number of each class. These statistics provide important information for understanding the distribution and range of values for the dataset, which can inform the development of machine learning models for bank note detection.</p>
+
+                     <img src="{{url_for('static', filename='images/table.png')}}" class="page-image" width="500"/>
+
+                    </div>  
+                      <br>
+                      
+
+                    <div class="col-lg-8">
+                        <h3>Exploration of Data: Compare all Columns with respect to Class</h3>
+                        <p class="lead">Here we compare the four different columns in different pair plots with respect to each other and class.</p>
+                      
+                        <p>The pair plots display how each feature in detecting real and fake bank notes relates to one another, where overlapping columns suggest similarity. The variance and skew features are better for distinguishing between real and fake, while curtosis and entropy may not be as effective.</p>
+
+                     <img src="{{url_for('static', filename='images/plots.png')}}" class="page-image" width="500"/>
+
+                    </div> 
+                      <br>
+                      
+                    <div class="col-lg-8">
+                        <h3>Box Plots</h3>
+                        <p class="lead">Use box plots to find the distribution of data for each column. </p>
+                      
+                        <p>We find that curtis and entropy tend to have more outliers in comparison to the other columns. Also we can use this distribution to understand the impact these columns will have on predcting the classification. </p>
+
+                     <img src="{{url_for('static', filename='images/boxplots.png')}}" class="page-image" width="500"/>
+
+                    </div>
+                      <br>
+
+                    <div class="col-lg-8">
+                        <br>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Contact section-->
+        <section id="contact">
+            <div class="container px-4">
+                <div class="row gx-4 justify-content-center">
+                    <div class="col-lg-8">
+                        <h1>Machine Learning</h1></br>
+                    </div>
+                    <div class="col-lg-8">
+                        <h2>Feature Selection</h2>
+                        <p class="lead">The first four columns of the bank note dataset, Image.Var, Image.Skew, Image.Curt, and Entropy, represent numerical measurements of the physical characteristics of the bank notes. These features can be used as input variables in an XGBoost model to predict the class of the bank note, i.e., whether it is genuine or counterfeit.To use these features, we first need to load and preprocess the dataset, which involves splitting the dataset into training and test sets and separating the input features from the target variable, i.e., the class of the bank note. We can then train the XGBoost model on the training set, using the first four columns of the dataset as input features and the target variable as the output label.</p>
+
+                    </div>
+                  
+                    <div class="col-lg-8">
+                        <h2>XGBoost: Explanation</h2>
+                      <h5>XGBClassifier is an appropriate choice for the banknote dataset because we need to predict whether the bank note is geninue or not. </h3>
+                        <p class="lead">XGBoost, or Extreme Gradient Boosting, is a machine learning algorithm that belongs to the family of gradient boosting algorithms. Gradient boosting is an ensemble method that combines multiple weak prediction models to create a strong predictor. In gradient boosting, models are built sequentially, and each new model tries to correct the errors made by the previous models.XGBoost improves on gradient boosting by using a more regularized model formalization to control overfitting, and a novel technique called "Gradient Tree Boosting," which uses decision trees as base learners. XGBoost builds decision trees in a parallel and optimized manner, and it also incorporates a technique called "boosting," which involves iteratively adding weak models to the ensemble, with each new model attempting to correct the errors of its predecessor.</p>
+                    </div> 
+                  
+                   <div class="col-lg-8">
+                        <h3>Exploration of Data: Confusion Matrix Heatmap</h3>
+                        <p class="lead">After the model has been trained and tested, the following heatmap is generated.</p>
+                      
+                        <p>A confusion matrix is a useful tool for evaluating the performance of a binary classification model. This particular confusion matrix shows the performance of the model on a dataset with two classes, represented by the rows of the matrix. The columns represent the predicted labels for each class. The confusion matrix indicates that the model correctly predicted the majority of instances, with 146 instances of Class 0 correctly predicted and 126 instances of Class 1 correctly predicted. There were only a few incorrect predictions, with 2 instances of Class 0 incorrectly predicted as Class 1 and 1 instance of Class 1 incorrectly predicted as Class 0. Overall, this confusion matrix suggests that the model is performing well with a high degree of accuracy.</p>
+
+                     <img src="{{url_for('static', filename='images/heatmapconfusion.png')}}" class="page-image" width="500"/>
+
+                    </div> 
+                  
+                   <div class="col-lg-8">
+                        <h3>Receiver Operating Characteristic Curve</h3>
+                        <p class="lead">An ROC curve (receiver operating characteristic curve) is a graph showing the performance of a classification model at all classification thresholds.</p>
+                      
+                        <p>In machine learning, the area under the ROC (Receiver Operating Characteristic) curve is used as a measure of the performance of a binary classifier. The ROC curve is a plot of the true positive rate (TPR) against the false positive rate (FPR) for different classification thresholds, and the AUC (Area Under the Curve) represents the overall performance of the classifier. An AUC value of 0.99 indicates that the classifier has a very high accuracy in distinguishing between the positive and negative samples. In other words, the classifier has a very high TPR and a very low FPR, which means that it is able to correctly identify the positive samples while minimizing the number of false positives.A high AUC value of 0.99 suggests that the classifier has an excellent ability to discriminate between the positive and negative classes, and is highly reliable.</p>
+
+                     <img src="{{url_for('static', filename='images/ROCcurve.png')}}" class="page-image" width="500"/>
+
+                    </div> 
+                      <br>
+                  
+                </div>
+            </div>
+        </section>
+        <section class="bg-light" id="Conclusion">
+            <div class="container px-4">
+                <div class="row gx-4 justify-content-center">
+                    <div class="col-lg-8">
+                    <h1 id="top-level-heading">Conclusion</h1><br/>
+                    </div>
+                    <div class="col-lg-8">
+
+                        <p class="lead">Data analysis is crucial in developing a machine learning model for bank note detection, as it enables us to identify relevant patterns and relationships between features and target variables, address data quality issues, and develop optimized models. Machine learning models can be integrated into financial systems to detect fraudulent bank notes in real-time, which is vital in preventing financial fraud and protecting the integrity of the financial system. Overall, machine learning models have diverse real-life applications, such as image recognition, speech recognition, and predictive analytics, and can revolutionize industries by automating decision-making, increasing efficiency, and improving accuracy.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+          <!-- Page Content -->
+
+        </section>
+        <!-- Footer-->
+        <footer class="py-5 bg-dark">
+            <div class="container px-4"><p class="m-0 text-center text-white">Copyright &copy; 2023 AI Camp</p></div>
+        </footer>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="/static/js/scripts.js"></script>
+    </body>
+</html>
